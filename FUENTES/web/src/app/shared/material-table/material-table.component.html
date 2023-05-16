@@ -1,0 +1,68 @@
+<div class="mat-elevation-z3 parent-grid {{theme}}" id="parent-grid" #divParent>
+    <div *ngIf="filter" class="filter-table">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro" autocomplete="off">
+        </mat-form-field>
+    </div>
+    <mat-table [ngClass]="(showSinResultados()) ? 'width-100 scroll-out' : 'width-100'" #table [dataSource]="rows"
+        matSort [trackBy]="myTrackById" [matSortActive]="sortCol" [matSortDirection]="sortDirecction"
+        [style.minHeight.px]="(showSinResultados()) ? 0 : autoPage ? (pageSize * rowHeight) : (pageSize * 36)">
+
+        <!-- Generic column definition -->
+        {{columns?.length}}
+
+        <!-- Checkbox Column -->
+        <ng-container *ngIf="selectionMode===3" matColumnDef="selectionColumn">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [style.flex]="'0 0 130px'" tabindex="-1">
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()" [disabled]="disabled"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.flex]="'0 0 130px'">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selectionToggle(row, true) : null"
+                    [checked]="selection.isSelected(row)" [disabled]="disabled">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container *ngFor="let col of columns" [matColumnDef]="col.prop">
+            <mat-header-cell *matHeaderCellDef mat-sort-header tabindex="-1"
+                [style.flex]="santitizerStyle('0 0 '+((col.width) ? col.width : '130px'))">{{ col.name }}
+            </mat-header-cell>
+
+
+            <mat-cell *matCellDef="let row" [style.flex]="santitizerStyle('0 0 '+((col.width) ? col.width : '130px'))"
+                [title]="getCellValue(col,row)" (click)="onClickCell(col,row)"
+                [ngClass]="{'row-seleccionado': (selected == row && selectedColumn==col && selectionMode===2) ,'row-disabled': (row.isDisabled && row.isDisabled())}">
+                <span *ngIf="!col.cellTemplate">{{getCellValue(col,row)}}</span>
+                <ng-container *ngIf="col.cellTemplate" [ngTemplateOutlet]="col.cellTemplate"
+                    [ngTemplateOutletContext]="{ row: row }"></ng-container>
+            </mat-cell>
+
+        </ng-container>
+        <ng-content></ng-content>
+        <mat-header-row *matHeaderRowDef="displayedColumns" (click)="selectionToggle(row, true)"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns; let index = index" (dblclick)="onDblClick(row)" [ngClass]="getRowClass(row,index)" [style.width.px]="gridWidth"></mat-row>
+    </mat-table>
+    <div *ngIf="showSinResultados()" class="sin-resultados" [style.minHeight.px]="(pageSize - 1) * 36">Sin
+        datos para mostrar</div>
+</div>
+<div class="table-footer mat-elevation-z3 {{theme}}">
+    <mat-paginator *ngIf="pagination" [pageSizeOptions]="(showPageOptions) ? pageSizeOptions: null"
+        [pageSize]="pageSize" #paginator showFirstLastButtons class="hide-items"> </mat-paginator>
+    <span class="example-spacer"></span>
+    <div *ngIf="buttons && buttons.length > 0" class="botones-footer">
+        <div *ngFor="let item of buttons">
+            <div *ngIf="!item.disabled" (click)="item.action($event)" [title]="item.name" role="button" tabindex="1"
+                (keypress)="item.action($event)" [ngClass]="'content-action '+ item.cssClass">
+                <i [ngClass]="'fa '+ item.iconClass"></i>
+            </div>
+            <div *ngIf="item.disabled" [title]="item.name" [ngClass]="'content-action disabled '+ item.cssClass"
+                role="button" tabindex="1">
+                <i [ngClass]="'fa '+ item.iconClass"></i>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+// @import "~bootstrap/dist/css/bootstrap.css";
+
+/**Estilos Modo Oscuro**/
+
+body.dark-theme {
+
+    .full-screen {
+        color: #685252;
+    }
+
+    .cal-month-view {
+        background-color: transparent;
+    }
+
+    .cal-week-view {
+        background-color: transparent;
+    }
+
+    .cal-week-view .cal-hour-odd {
+        background-color: transparent;
+    }
+
+    .cal-month-view {
+        background-color: transparent;
+    }
+
+    .cal-month-view .cal-cell-row:hover {
+        background-color: #858585;
+    }
+
+    .cal-month-view .cal-cell-row .cal-cell:hover,
+    .cal-month-view .cal-cell.cal-has-events.cal-open {
+        background-color: #727272;
+    }
+
+    .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+        color: #fdfdfd;
+    }
+
+    .cal-week-view .cal-header.cal-today {
+        background-color: #747474;
+    }
+
+    .cal-month-view .cal-day-cell.cal-today {
+        background-color: #747474;
+    }
+
+    .cal-week-view .cal-event {
+        font-weight: bold;
+    }
+
+    .cal-week-view .cal-header.cal-weekend span {
+        color: #ffffff;
+    }
+
+    .filter-table {
+        // fondo filtro
+        background-color: transparent;
+    }
+
+}
+
+@font-face {
+    font-family: 'soflex-font';
+    src: url('assets/fonts/soflex-font.eot?42888173');
+    src: url('assets/fonts/soflex-font.eot?42888173#iefix') format('embedded-opentype'),
+         url('assets/fonts/soflex-font.woff2?42888173') format('woff2'),
+         url('assets/fonts/soflex-font.woff?42888173') format('woff'),
+         url('assets/fonts/soflex-font.ttf?42888173') format('truetype'),
+         url('assets/fonts/soflex-font.svg?42888173#soflex-font') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mat-column-estado-nombre[title] span, .estado-grilla {
+    padding: 3px 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    color: white;
+ }
+
+.bullet-ico-soflex {
+    border-radius: 50px;
+    font-family: soflex-font;
+    font-size: 12px;
+    border: 1.5px solid;
+    width: 23px;
+    text-align: center;
+    padding: 1px;
+    position: relative;
+    top: -3px;
+    left: -1px;
+    display: flex;
+    color: white;
+    align-items: center;
+    height: 23px;
+    justify-content: center;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}

@@ -1,0 +1,249 @@
+@import '../../../../node_modules/@soflex/sisep-base/assets/css/styling/__themes.scss';
+@import '../../../themes.scss';
+
+@each $theme, $map in $themes {
+  .parent-grid {
+    padding: 0px;
+    margin: 0px auto;
+    display: inline-block;
+    width: 100%;
+    margin-left: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+    
+
+  .mat-header-cell.mat-sort-header-sorted {
+    color: black;
+  }
+
+  .width-100 {
+    min-width: 100%;
+    overflow-x: auto;
+  }
+
+  .scroll-out {
+    overflow-x: hidden!important;
+  }
+
+  .mat-header-row {
+    min-height: 35px;
+  
+  }
+
+  .mat-row{
+    padding: 0px !important ;
+  }
+
+
+
+
+
+  .mat-row {
+    min-height: 30px;
+    min-width: 100%;
+    padding: 0px 24px;
+    cursor: pointer;
+  }
+  .form-group-btn{
+    padding-top: 21px;
+  }
+
+  .filter-table {
+      height: 64px;
+      padding: 8px 24px 0;
+      background-color: #fafafa;
+    }
+
+  .row-seleccionado {
+    background-color: #66D7E5;
+  }
+
+  .row-disabled {
+    color: grey
+  }
+
+  .sin-resultados{
+    /* width: 100%; */
+    min-height: 30px;
+    /* background-color: #fff; */
+    padding-left: 30px;
+    padding-top: 6px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .mat-table {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  ::ng-deep.mat-cell mat-icon {
+    font-size: 18px;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    color: #585858;
+    cursor: pointer;
+  }
+
+  ::ng-deep.mat-cell, ::ng-deep.mat-cell span:not(.mat-tooltip-trigger) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 97.5%;
+  }
+
+  .row-par {
+  /*  background-color: #fff; */
+  }
+  .row-impar {
+  /*  background-color: #f9f9f9; */
+  }
+
+  ::ng-deep .mat-paginator-range-label {
+    margin: 5px!important;
+  }
+
+  .hide-items ::ng-deep.mat-paginator-page-size {
+    display: none;
+  }
+
+  .content-buttons{
+    position: absolute;
+    padding: 5px;
+    min-height: 40px!important;
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+  .content-action {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    margin-left: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+  }
+
+  .disabled {
+    cursor: not-allowed!important;
+    color: #bbb;
+  }
+
+  /* .content-action i {
+    z-index: 100;
+  } */
+
+  ::ng-deep .mat-paginator-container {
+    min-height: 35px!important;
+  }
+
+  .action {
+    width: 30px;
+    height: 30px;
+    color: white;
+  }
+
+  .action ::ng-deep.mat-button-wrapper{
+    padding: 0px;
+  }
+
+
+  ::ng-deep .mat-sort-header-arrow {
+    opacity: 0;
+  }
+
+
+  ::ng-deep .colum-table-btn{
+    color: map-get($map, secondary)!important;
+  }
+
+  ::ng-deep .row-seleccionado .colum-table-btn{ 
+    color: map-get($map, text)!important;
+  
+  }
+
+  .table-footer.#{$theme} .botones-footer{
+    flex: 0 1;
+    background: map-get($map, primary);
+    .content-action{
+      margin: 5px
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .parent-grid {
+    margin: 5px auto;
+  }
+}
+
+@media all and (max-width: 599px) {
+  ::ng-deep .mat-paginator-container {
+    max-height: 35px;
+  }
+}
+
+
+@each $theme, $map in $themes {
+  :host .#{$theme} {
+      
+
+      table {
+          width: 100%;
+          margin-top: 10px;
+      }
+
+      mat-form-field {
+          display:block;
+          margin-right: 25px;
+      }
+
+      ::ng-deep mat-footer-row {
+          border: none!important;
+      }
+
+      ::ng-deep .table-personas {
+          height: calc(100vh - 400px);
+
+          ::ng-deep .mat-paginator-outer-container{
+              position: absolute;
+              top: calc(100vh - 320px);
+              right: 20px;
+          }
+
+          .paginator-sin-form .mat-paginator-outer-container {
+              right: 70px!important;
+          }
+
+      }
+
+      
+    }
+    
+}
+
+
+/* Propios de Denuncias */
+@each $theme, $map in $custom-themes {
+
+  .#{$theme}.table-footer{
+    display: flex;
+    margin-top: -5px;
+    margin-left: 1px;
+    width: 100%;
+    mat-paginator {
+      flex: 1 1;
+    }
+    
+  }
+
+}
+

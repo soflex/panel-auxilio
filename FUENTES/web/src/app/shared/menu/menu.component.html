@@ -1,0 +1,10 @@
+<div class="menu">
+    <button class="menu" mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+    <mat-menu #menu="matMenu">
+        <button *ngIf="puedeVerAdmin" mat-menu-item (click)="verAdmin()" >Administrador</button>
+        <button *ngIf="puedeVerDerivaciones" mat-menu-item (click)="verDerivaciones()" >Derivaciones</button>
+        <button *ngIf="puedeVerTraslaos" mat-menu-item (click)="verTraslados()" >Traslados</button>
+        <button *ngIf="puedeVerPlNegativas" mat-menu-item (click)="verPntNegativas()" >Planillas negativas</button>
+        <button *ngIf="puedeVerPtlGuardia" mat-menu-item (click)="verPnlGuardia()" >Plantel de guardia</button>
+    </mat-menu>
+</div>

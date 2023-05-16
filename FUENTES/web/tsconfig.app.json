@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": [],
+    "target": "es2016",
+    "lib": [
+        "es2017",
+        "dom",
+        "scripthost"
+    ],
+  },
+  "angularCompilerOptions": {
+    "preserveSymlinks": true
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
+}

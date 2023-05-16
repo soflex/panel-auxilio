@@ -1,0 +1,12 @@
+SELECT t.caratulacionId
+        ,t.nombre
+        ,t.descripcion
+        ,t.borrado
+        ,CONVERT(VARCHAR, t.fechaBorrado,126) fechaBorrado
+        ,t.usuarioBorrado
+        ,CONVERT(VARCHAR, t.fechaAlta,126) fechaAlta
+        ,t.usuarioAlta 
+            FROM pds.Caratulacion t WITH (NOLOCK)
+            
+            WHERE  1 = 1 AND isnull(t.borrado, 0) = 0
+            ORDER BY nombre[]

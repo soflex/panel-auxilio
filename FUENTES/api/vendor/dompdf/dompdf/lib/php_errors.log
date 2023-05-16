@@ -1,0 +1,30 @@
+[29-Apr-2021 18:54:12 UTC] PHP Fatal error:  Uncaught Dompdf\Exception: Unable to read './fonts/Roboto-Regular.ttf'. in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php:86
+Stack trace:
+#0 D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php(201): install_font_family(Object(Dompdf\Dompdf), 'Roboto', './fonts/Roboto-...', './fonts/Roboto-...')
+#1 {main}
+  thrown in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php on line 86
+[29-Apr-2021 18:54:25 UTC] PHP Fatal error:  Uncaught Dompdf\Exception: Unable to read './Roboto-Regular.ttf'. in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php:86
+Stack trace:
+#0 D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php(201): install_font_family(Object(Dompdf\Dompdf), 'Roboto', './Roboto-Regula...', './Roboto-Bold.t...')
+#1 {main}
+  thrown in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php on line 86
+[29-Apr-2021 18:55:09 UTC] PHP Fatal error:  Uncaught Dompdf\Exception: Unable to read './Roboto-Regular-webfont.ttf'. in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php:86
+Stack trace:
+#0 D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php(201): install_font_family(Object(Dompdf\Dompdf), 'Roboto', './Roboto-Regula...')
+#1 {main}
+  thrown in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php on line 86
+[29-Apr-2021 18:55:33 UTC] PHP Fatal error:  Uncaught Dompdf\Exception: Unable to copy './fonts/Roboto-Regular-webfont.ttf' to 'D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf/lib/fonts/Roboto-Regular-webfont.ttf' in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php:148
+Stack trace:
+#0 D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php(201): install_font_family(Object(Dompdf\Dompdf), 'Roboto', './fonts/Roboto-...')
+#1 {main}
+  thrown in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php on line 148
+[29-Apr-2021 19:00:15 UTC] PHP Fatal error:  Uncaught Dompdf\Exception: Unable to read './froboto/Roboto-Regular-webfont.ttf'. in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php:86
+Stack trace:
+#0 D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php(201): install_font_family(Object(Dompdf\Dompdf), 'Roboto', './froboto/Robot...')
+#1 {main}
+  thrown in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php on line 86
+[29-Apr-2021 19:00:25 UTC] PHP Fatal error:  Uncaught Dompdf\Exception: Unable to read './roboto/Roboto-Regular-webfont.ttf'. in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php:86
+Stack trace:
+#0 D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php(201): install_font_family(Object(Dompdf\Dompdf), 'Roboto', './roboto/Roboto...')
+#1 {main}
+  thrown in D:\Soflex Proyectos\PDS Impresion\api\vendor\dompdf\dompdf\lib\load_font.php on line 86

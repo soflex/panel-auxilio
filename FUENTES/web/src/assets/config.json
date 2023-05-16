@@ -1,0 +1,105 @@
+{
+   "API": {
+      "default_": "http://192.168.1.30:8081/panel-auxilio/public/index.php/",
+      "default": "/panel-auxilio_api/index.php",
+      "geocode": "http://192.168.1.17/sisep/apps/info-calle/index.php/geo-decoder"
+   },
+   "API_ADJUNTO": "/panel-auxilio_api/index.php/",
+   "LOGO_HEADER": "assets/img/logoSisep_[theme].png",
+   "TITULO_WEB": "Panel de Auxilio",
+   "TIENE_PROYECTOS": false,
+   "MODULO": "panel-auxilio",
+   "ICONO_WEB": "favicon.ico",
+   "SISADMIN": "/sis_admin/#/admin",
+   "SISINICIO": "/sis_admin/#/inicio",
+   "SISLOGIN": "/sis_admin/#/login",
+   "DEBUG": true,
+   "MAPAS": [
+      {
+         "id": "normal",
+         "nombre": "Normal",
+         "url": "https://mapa.soflex.com.ar/hot/{z}/{x}/{y}.png",
+         "options": {
+            "maxZoom": 18,
+            "attribution": "&copy; SOFLEX"
+         },
+         "img": "./assets/img/select/extnormal.png"
+      },
+      {
+         "id": "gris",
+         "nombre": "Gris *",
+         "url": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+         "testUrl": "https://a.basemaps.cartocdn.com/light_all/0/0/0.png",
+         "options": {
+            "subdomains": "abcd",
+            "maxZoom": 20,
+            "attribution": ""
+         },
+         "img": "./assets/img/select/extgris.png"
+      },
+      {
+         "id": "caba",
+         "nombre": "CABA *",
+         "testUrl": "https://tiles1.usig.buenosaires.gob.ar/mapcache/tms/1.0.0/amba_con_transporte_3857@GoogleMapsCompatible/0/0/0.png",
+         "url": "https://tiles1.usig.buenosaires.gob.ar/mapcache/tms/1.0.0/amba_con_transporte_3857@GoogleMapsCompatible/{z}/{x}/{y}.png",
+         "options": {
+            "maxZoom": 18,
+            "attribution": "&copy; SOFLEX",
+            "tms": true
+         },
+         "img": "./assets/img/select/extcaba.png"
+      },
+      {
+         "id": "ign",
+         "nombre": "IGN *",
+         "testUrl": "https://ide.ign.gob.ar/geoservicios/rest/services/sensores_remotos/amba_d/ImageServer/tile/16/39492/22136",
+         "url": "https://ide.ign.gob.ar/geoservicios/rest/services/sensores_remotos/amba_d/ImageServer/tile/{z}/{y}/{x}",
+         "options": {
+            "maxZoom": 19,
+            "attribution": ""
+         },
+         "img": "./assets/img/select/extign.png"
+      },
+      {
+         "id": "esri",
+         "nombre": "ESRI *",
+         "testUrl": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/0/0/0",
+         "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+         "options": {
+            "maxZoom": 19,
+            "attribution": "&copy; SOFLEX"
+         },
+         "img": "./assets/img/select/extesri.png"
+      },
+      {
+         "id": "google",
+         "nombre": "Google *",
+         "testUrl": "https://mt0.google.com/vt/lyrs=s&x=0&y=0&z=0",
+         "url": "https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+         "options": {
+            "subdomains": [
+               "mt0",
+               "mt1",
+               "mt2",
+               "mt3"
+            ],
+            "maxZoom": 19,
+            "attribution": ""
+         },
+         "img": "./assets/img/select/extgoogle.png"
+      },
+      {
+         "id": "black",
+         "nombre": "Negro",
+         "url": "https://sisep.seguridadciudad.gob.ar/proxy/mapas/black/{z}/{x}/{y}.png",
+         "options": {
+            "maxZoom": 18,
+            "attribution": ""
+         },
+         "img": "./assets/img/select/extblack.png"
+      }
+   ],
+   "URL_GEO": "http://192.168.1.17/sisep/apps/info-calle/index.php/geo-decoder",
+   "URL_RENAPER_DNI": "http://localhost/sisa/index.php?documento=",
+   "URL_RENAPER_SEXO": "&sexo="
+}

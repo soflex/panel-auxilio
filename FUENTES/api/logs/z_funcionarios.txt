@@ -1,0 +1,17 @@
+SELECT funcionarioId
+                        ,f.tipoFuncionarioId
+                        ,tf.nombre as tipoFuncionario
+                        ,f.ordenServicioId
+                        ,etapaId
+                        ,f.movilId
+                        ,iif(f.movilId is null, f.legajo, m.patente collate SQL_Latin1_General_CP1_CI_AS) legajo
+                        ,iif(f.movilId is null, f.nombre, m.descripcion collate SQL_Latin1_General_CP1_CI_AS) nombre
+                        ,iif(f.movilId is null, f.apellido, NULL) apellido 
+                        ,isnull(iif(f.movilId is null or f.cargo is not null, f.cargo, descripcion_aux collate SQL_Latin1_General_CP1_CI_AS), 'Sin Informar') cargo
+                        ,observaciones 
+                        ,f.borrado
+                        ,CONVERT(VARCHAR, f.fechaActualizacion, 126) fechaActualizacion
+                        ,f.tipoRecursoServicioId FROM pds.Funcionario f WITH (NOLOCK)
+            INNER JOIN pds.TipoFuncionario tf WITH (NOLOCK) on tf.tipoFuncionarioId = f.tipoFuncionarioId
+                        LEFT JOIN AVL_Estructura.dbo.Movil m WITH (NOLOCK) on m.movilId = f.movilId and m.tipoMovilId = 5
+            WHERE ordenServicioId = ? and isnull(f.borrado, 0) = 0{"field":"ordenServicioId","id":1}

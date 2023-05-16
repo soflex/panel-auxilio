@@ -1,0 +1,39 @@
+SELECT ubicacionId
+                    ,solicitudId
+                    ,ordenServicioId
+                    ,etapaId
+                    ,etapaSectorId
+                    ,u.calle calle
+                    ,u.numero numero
+                    ,u.interseccionCalle interseccionCalle
+                    ,u.piso piso
+                    ,u.depto depto
+                    ,u.codigoPostal codigoPostal
+                    ,u.Observaciones Observaciones
+                    ,u.latitud latitud
+                    ,u.longitud longitud
+                    ,u.villa villa
+                    ,u.manzana manzana
+                    ,u.bloque bloque
+                    ,u.torre torre
+                    ,u.nudo nudo
+                    ,u.paisId
+                    ,pa.descripcion as pais
+                    ,u.provinciaId
+                    ,p.descripcion as provincia
+                    ,u.departamentoId
+                    ,d.descripcion as departamento
+                    ,u.localidadId
+                    ,l.descripcion as localidad
+                    ,u.geo.ToString() geo
+                    ,u.radio radio
+                    ,u.borrado
+                    ,CONVERT(VARCHAR, u.fechaActualizacion, 126) fechaActualizacion 
+                    ,u.hitoId
+                    ,u.imagen FROM pds.Ubicacion u WITH (NOLOCK)
+            LEFT JOIN pds.Hito H WITH (NOLOCK) on u.hitoId = h.hitoId and h.borrado = 0
+        LEFT JOIN pds.Localidad L WITH (NOLOCK) on isnull(h.localidadID, u.localidadId) = l.localidadId and l.borrado = 0
+        LEFT JOIN pds.Departamento D WITH (NOLOCK) on D.departamentoId = l.departamentoId and d.borrado = 0
+        LEFT JOIN pds.Provincia P WITH (NOLOCK) on p.provinciaId = d.provinciaId  and p.borrado = 0
+        LEFT JOIN pds.Pais PA WITH (NOLOCK) on p.paisId = PA.paisId  and pa.borrado = 0
+            WHERE u.solicitudId = ? and isnull(u.borrado, 0) = 0{"id":1}

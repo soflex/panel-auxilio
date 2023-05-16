@@ -1,0 +1,17 @@
+SELECT t.tipificacionId
+        ,t.nombre
+        ,t.descripcion
+        ,t.borrado
+        ,CONVERT(VARCHAR, t.fechaBorrado,126) fechaBorrado
+        ,t.usuarioBorrado
+        ,CONVERT(VARCHAR, t.fechaAlta,126) fechaAlta
+        ,t.usuarioAlta
+        ,ct.clasificacionId
+        ,c.nombre clasificacion 
+            FROM pds.Tipificacion t WITH (NOLOCK)
+            
+            LEFT JOIN pds.ClasificacionTipificacion ct WITH (NOLOCK) on ct.tipificacionId = t.tipificacionId
+            LEFT JOIN pds.Clasificacion c WITH (NOLOCK) on ct.clasificacionId = c.clasificacionId
+        
+            WHERE  1 = 1 AND isnull(t.borrado, 0) = 0
+            ORDER BY nombre[]

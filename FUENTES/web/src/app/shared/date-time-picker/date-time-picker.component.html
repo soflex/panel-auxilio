@@ -1,0 +1,78 @@
+
+<form [formGroup]="form">
+    <mat-form-field [ngClass]="CACHE_OUTPUT===null && required===true && changed ? 'error': ''" color="accent" appearance="outline" (focusout)="validarTodoSeparado()" (click)="openPicker()">
+        
+        <mat-label>{{titulo}}</mat-label>
+    
+        <div class="container col-lg-12">
+            <!-- FECHA  -->
+            <div class="item dia">
+                <input matInput #dateDia formControlName="fDia" class="dateDia" autocomplete="off" placeholder="dd" minlength="1" maxlength="2" 
+                [(ngModel)]="dDia" (click)='pararPropagacion($event)' (keypress)="tabular($event,'mes')" (focus)="resaltar($event)" (focusout)="dDia=formatNumber(dDia)" (ngModelChange)="modelChanged($event,2,'mes')">
+            </div>
+    
+            <div class="item dateSep"> <input matInput placeholder="/" autocomplete="off" disabled> </div>
+    
+            <div class="item">
+                <input matInput #dateMes formControlName="fMes" class="dateMes" placeholder="mm" minlength="1" maxlength="2" 
+                [(ngModel)]="dMes" (click)='pararPropagacion($event)' (keypress)="tabular($event,'anio')" (focus)="resaltar($event)" (focusout)="dMes=formatNumber(dMes)" (ngModelChange)="modelChanged($event,2,'anio')">
+            </div>
+    
+            <div class="item dateSep"> <input matInput placeholder="/" autocomplete="off" disabled> </div>
+    
+            <div class="item anio">
+                <input matInput #dateAnio formControlName="fAnio" class="dateAnio" autocomplete="off" placeholder="aaaa" minlength="4" maxlength="4"  
+                [(ngModel)]="dAnio" (click)='pararPropagacion($event)' (keypress)="tabular($event, onlyDate ? null: 'horas')" (focus)="resaltar($event)" (focusout)="dAnio=formatNumber(dAnio,4)" (ngModelChange)="modelChanged($event,4, onlyDate ? null: 'horas')">
+            </div>
+    
+    
+            <div class="item mitadSep" *ngIf="!onlyDate"> <input matInput placeholder="" autocomplete="off" disabled> </div>
+    
+            <!-- HORA  -->
+            <div class="item hora" *ngIf="!onlyDate">
+                <input matInput #timeHoras formControlName="fHoras" class="timeHoras" autocomplete="off" placeholder="--" minlength="2" maxlength="2" 
+                [(ngModel)]="tHoras" (click)='pararPropagacion($event)' (keypress)="tabular($event,'minutos')" (focus)="resaltar($event)" (focusout)="tHoras=formatNumber(tHoras)" (ngModelChange)="modelChanged($event,2,'minutos')">
+            </div>
+    
+            <div class="item timeSep" *ngIf="!onlyDate"> <input matInput class="timeSep" placeholder=":" autocomplete="off" disabled> </div>
+    
+            <div class="item minutos" *ngIf="!onlyDate">
+                <input matInput #timeMinutos formControlName="fMinutos" class="timeMinutos" autocomplete="off" placeholder="--" minlength="2" maxlength="2" 
+                [(ngModel)]="tMinutos" (click)='pararPropagacion($event)' (keypress)="tabular($event)" (focus)="resaltar($event)" (focusout)="tMinutos=formatNumber(tMinutos)" (ngModelChange)="modelChanged($event,2)">
+            </div>
+    
+            <input matInput [matDatepicker]="picker" class="oculto" [(ngModel)]="fechaPicker" (ngModelChange)="changeFechaPicker()" [ngModelOptions]="{standalone: true}"> 
+            <mat-datepicker #picker></mat-datepicker>
+    
+    
+        </div>
+    
+    </mat-form-field>
+    
+    <mat-error *ngIf="(CACHE_OUTPUT===null) && (required===true) && changed">* Ingrese una fecha válida</mat-error>
+    
+    </form>
+    
+    <!-- LIMPIAR -->
+    <div class="item limpiar">
+        <div class='limpiar' *ngIf="!isAllNull() && !disabled" title="Limpiar"
+                    (click)="limpiar($event)">
+                    X
+        </div>
+    </div>
+    
+    
+    <div class="oculto divTime mat-datepicker-content " #divTime id="divTime">
+        <div class="content-horas" #divHoras>
+            <div *ngFor="let hora of horas" class="item-hora" [ngClass]="{'selected-time': hora == tHoras}" (click)="clickHora(hora)">{{hora}}</div>
+        </div>
+        <div class="content-minutos" #divMinutos>
+            <div *ngFor="let minuto of minutos" class="item-hora" [ngClass]="{'selected-time': minuto == tMinutos}" (click)="clickMinutos(minuto)">{{minuto}}</div>	
+        </div>
+    </div>
+    
+    <!-- <big>
+    <div>FMin: {{ formatoDate(fechaMin) | date:'short'}}</div>
+    <div>FMax: {{ formatoDate(fechaMax) | date:'short'}}</div>
+    </big> -->
+    <!-- <pre> {{dAnio+'_'+dMes+'_'+dDia+' '+tHoras+'_'+tMinutos}} </pre> -->

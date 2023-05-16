@@ -1,0 +1,24 @@
+SELECT cantidadRecursosId
+                        ,ordenServicioId
+                        ,cr.compId
+                        ,cantidadRecursos
+                        ,cr.borrado
+                        ,CONVERT(VARCHAR,cr.fechaAlta, 126) fechaAlta
+                        ,CONVERT(VARCHAR,cr.fechaActualizacion, 126) fechaActualizacion
+                        ,cr.tipoRecursoId
+                        ,cr.tipoRecursoServicioId
+                        ,str.subtipoRecurso subtipoRecursoId
+                        ,observaciones
+                        ,c.nombre as comp 
+                        ,tr.nombre as tipoRecurso
+                        ,str.nombre as subTipoRecurso
+                        ,REPLACE(OrdenamientoArbol, 'SOFLEX->MJYS->CABA->Jefatura de Policia->', '') arbol
+                        ,cr.cantidadEfectivos
+                        ,cr.mostrarEnOrden
+                        
+            FROM pds.CantidadRecursos cr WITH (NOLOCK)
+             INNER JOIN AVL_Estructura.dbo.comp c on cr.compId = c.CompID
+                        LEFT JOIN pds.TipoRecurso tr on tr.tipoRecursoId = cr.tipoRecursoId
+                        LEFT JOIN pds.SubTipoRecurso str on str.subtipoRecurso = cr.subtipoRecursoId and str.tipoRecursoId = cr.tipoRecursoId
+            WHERE etapaSectorId = ? and isnull(cr.borrado, 0) = 0
+            order by 14{"field":"etapaSectorId","id":75}

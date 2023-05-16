@@ -1,0 +1,45 @@
+SELECT 
+            os.ordenServicioId,
+			os.numero,
+			os.nombre,
+			os.descripcion,
+			os.observaciones,
+            CONVERT(VARCHAR,os.fechaInicio, 126) fechaInicio,
+            CONVERT(VARCHAR,os.fechaFin, 126) fechaFin,		
+            CONVERT(VARCHAR,os.fechaImplantacionInicio, 126) fechaImplantacionInicio,
+            CONVERT(VARCHAR,os.fechaImplantacionFin, 126) fechaImplantacionFin,		
+            e.estadoId,
+            os.caratulacionId,
+            os.tipificacionId,
+			os.subtipificacionId,
+            os.mision,
+            os.situacion,
+            os.lugar,
+            os.usuarioAlta,
+            CONVERT(VARCHAR,os.fechaAlta, 126) fechaAlta,
+            t.nombre tipificacion ,
+            st.nombre subtipificacion,
+            c.nombre caratulacion,
+            e.nombre estado,
+            e.color colorEstado,
+            e.estadosPosibles,
+            e.permiteEditar,
+            e.requiereMotivoCancelacion,
+            e.permiteDistribuir,
+            e.permiteReemplazar,
+            os.borrado,
+            CONVERT(VARCHAR,os.fechaBorrado, 126) fechaBorrado,
+            os.compIdAlta as compId,
+            comp.nombre as comp,
+            os.firmantes,
+            CONVERT(VARCHAR,os.numeroFecha, 126) numeroFecha,	
+            CONVERT(VARCHAR,os.cancelacionFecha, 126) cancelacionFecha,
+            L.texto as leyenda,
+            os.ordenServicioOriginalId FROM pds.OrdenServicio os WITH (NOLOCK)
+            LEFT JOIN [pds].[Estado] e  with (nolock) on e.estadoId = os.estadoOrdenServicioId
+        LEFT JOIN [pds].[Caratulacion] c  with (nolock) on c.caratulacionId = os.caratulacionId
+        LEFT JOIN [pds].[Tipificacion] t  with (nolock) on t.tipificacionId = os.tipificacionId
+        LEFT JOIN [pds].[Subtipificacion] st  with (nolock) on st.subtipificacionId = os.subtipificacionId
+        LEFT JOIN AVL_Estructura.dbo.comp Comp on comp.compId = os.compIdAlta
+        left join pds.OrdenServicioLeyenda L on YEAR(numeroFecha) = L.anio
+            WHERE ordenServicioId = ? and isnull(os.borrado, 0) = 0{"id":1}

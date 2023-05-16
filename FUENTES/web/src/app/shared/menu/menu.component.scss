@@ -1,0 +1,16 @@
+.menu {
+    height: 50px;
+    margin: 0 0 0 5px;
+}
+
+
+.mat-menu-item {
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+ }
+ 
+ .mat-menu-item:last-child {
+    border-bottom: none;
+ }

@@ -1,0 +1,18 @@
+.empresa-logo {
+    background-image: url('../../img/logos/policia-caba.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.empresa-logo-triangle {
+    width: 0;
+    height: 0;
+    border-bottom: solid 5px rgb(35, 108, 190);
+    border-right: solid 5px transparent;
+    border-left: solid 5px rgb(42, 54, 163);
+    border-top: solid 5px transparent;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}

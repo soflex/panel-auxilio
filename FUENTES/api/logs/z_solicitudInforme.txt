@@ -1,0 +1,5 @@
+SELECT i.solicitudInformeId,
+        i.nombre,
+        i.descripcion FROM pds.SolicitudInforme i WITH (NOLOCK)
+            INNER JOIN pds.Solicitud  s WITH (NOLOCK) on s.solicitudInformeId = i.solicitudInformeId
+            WHERE s.solicitudId = ? and isnull(i.borrado, 0) = 0{"id":1}

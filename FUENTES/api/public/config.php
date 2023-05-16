@@ -9,7 +9,7 @@ $ambiente = "dev";
 if($ambiente == "dev"){
 
     defined ('DB_HOST') ? null : define('DB_HOST','192.168.1.32');
-    defined ('DB_DATABASE') ? null : define('DB_DATABASE', "SISEP_Traslados");
+    defined ('DB_DATABASE') ? null : define('DB_DATABASE', "sae911_VG");
     defined ('DB_USERNAME') ? null : define('DB_USERNAME', "sa");
     defined ('DB_PASSWORD') ? null : define('DB_PASSWORD', "Digital23");
     
@@ -29,7 +29,7 @@ if($ambiente == "dev"){
 else if ($ambiente == "test")
 {
     defined ('DB_HOST') ? null : define('DB_HOST','172.24.134.25');
-    defined ('DB_DATABASE') ? null : define('DB_DATABASE', "SISEP_Traslados");
+    defined ('DB_DATABASE') ? null : define('DB_DATABASE', "sae911_VG");
     defined ('DB_USERNAME') ? null : define('DB_USERNAME', "admin");
     defined ('DB_PASSWORD') ? null : define('DB_PASSWORD', "Soflex9112323sql");
     
@@ -49,7 +49,7 @@ else if ($ambiente == "prod")
 {
    
     defined ('DB_HOST') ? null : define('DB_HOST','172.24.134.23');
-    defined ('DB_DATABASE') ? null : define('DB_DATABASE', "SISEP_Traslados");
+    defined ('DB_DATABASE') ? null : define('DB_DATABASE', "sae911_VG");
     defined ('DB_USERNAME') ? null : define('DB_USERNAME', "admin");
     defined ('DB_PASSWORD') ? null : define('DB_PASSWORD', "Soflex9112323sql");
     

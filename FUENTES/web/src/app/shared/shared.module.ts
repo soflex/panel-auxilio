@@ -20,7 +20,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MaterialTableComponent } from './material-table/material-table.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -35,6 +34,7 @@ import { MenuComponent } from './menu/menu.component';
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 // ======================== GENERAL =============================================================
 import { PanelAuxilioComponent } from '../components/panel-auxilio/panel-auxilio.component';
+import { TranslateService } from '../services/translate-service.service';
 
 
 registerLocaleData(localeEsAr, 'es-Ar');
@@ -58,7 +58,6 @@ registerLocaleData(localeEsAr, 'es-Ar');
         }),
         FormsModule,
         NgSelectModule,
-        ChartsModule,
         ReactiveFormsModule,
         NgxMatFileInputModule,
         MatTabsModule,
@@ -82,7 +81,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
         NgSelectModule
     ],
     providers: [
-        ConfigService
+        ConfigService,
+        TranslateService
     ],
     entryComponents: [
         PanelAuxilioComponent

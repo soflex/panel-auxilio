@@ -4,9 +4,9 @@ import { SesionService } from '@soflex/sisep-base';
 import { PanelAuxilioComponent } from './components/panel-auxilio/panel-auxilio.component';
 
 const routes: Routes = [
-  { path: '',  redirectTo: 'panel-auxilio', pathMatch: 'full' /* , canActivate: [AppGuard]  */ },
+  { path: '',  redirectTo: 'home', pathMatch: 'full' /* , canActivate: [AppGuard]  */ },
   
-  { path: 'panel-auxilio', component: PanelAuxilioComponent },
+  { path: 'home', component: PanelAuxilioComponent },
 ];
 
 @NgModule({

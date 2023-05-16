@@ -1,0 +1,720 @@
+@import '../../../../../node_modules/@soflex/sisep-base/assets/css/styling/__themes.scss';
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.card-data-cancel {
+    margin-left: 10px;
+    width: 98%;
+    max-height: 52px;
+    min-height: 52px;
+    float: left;
+    margin: 6px;
+}
+
+.caselab {
+    display: block;
+    // min-height: 134px;
+    // max-height: 134px;
+}
+
+.grilla {
+    width: calc(98% - 15px);
+    float: left;
+    min-height: calc(98vh - 60px);
+    margin: 10px 5px;
+    margin-left: 25px;
+
+    ::ng-deep .mat-cell {
+        font-size: 13px !important;
+    }
+
+}
+
+.grilla .button-row .mat-raised-button {
+    margin: 10px;
+}
+
+.grilla-tab-icon {
+    margin-right: 8px;
+}
+
+.titulo-datos.clearfix {
+    background-color: #00bcd4;
+    color: white;
+    box-shadow: 2px 2px 5px #999;
+}
+
+.titulo-datos.clearfix span p {
+    margin-right: 30px;
+    display: inline;
+}
+
+.titulo-datos.clearfix span p label {
+    line-height: 6px;
+    text-align: justify;
+}
+
+
+@each $theme,
+$map in $themes {
+    .icono {
+        font-size: 18px;
+        margin: 5px 10px;
+    }
+
+    .icono.primary {
+        color: map-get($map, secondary-dark)
+    }
+
+    .icono.danger {
+        color: red
+    }
+
+
+    .icono.user {
+        color: #5cb85c;
+    }
+
+    .dinamica ::ng-deep .parent-grid {
+        height: calc(100vh - 250px);
+    }
+
+    .body-content.#{$theme} {
+        width: calc(100vw - 10px);
+        height: calc(80vh - 60px);
+        display: inline-block;
+        color: map-get($map, text-on-primary-light);
+
+        .left {
+            width: 70%;
+            border: 1px solid map-get($map, secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 60px);
+            border-right: none;
+            background-color: map-get($map, primary-light);
+        }
+
+        .right {
+            width: 30%;
+            border: 1px solid map-get($map, secondary);
+            height: calc(100vh - 60px);
+            border-left: none;
+            background-color: map-get($map, primary-dark);
+
+
+            .rightTop {
+                height: 20vh;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .rightBottom {
+                height: calc(100% - 20vh);
+                background-color: map-get($map, secondary);
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        }
+    }
+
+}
+
+
+::ng-deep div.cdk-overlay-container .mat-select-panel {
+    z-index: 1001;
+}
+
+.filtro {
+    width: 98%;
+    float: left;
+    padding: 5px 0 0;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 4px 4px 5px 0px rgba(211, 210, 210, 0.68);
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(211, 210, 210, 0.68);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(211, 210, 210, 0.68);
+}
+
+// .filtro {
+//     width: 98%;
+//     min-height: 134px;
+//     max-height: 134px;
+//     float: left;
+//     margin: 5px;
+//     margin-top: 2px;
+// }
+
+.panel {
+    width: 98%;
+    max-height: 57px;
+    min-height: 57px;
+    float: left;
+    margin: 6px;
+}
+
+
+:host ::ng-deep .easy-button-button {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.btn-verde {
+    background-color: #33CC00 !important;
+}
+
+.titulo-filtros {
+    margin: 10px 0;
+}
+
+/******Botones*******/
+
+section {
+    display: table;
+    text-align: center;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.resumen .caja-resumen {
+    padding: 10px;
+}
+
+.resumen .caja-resumen .direccion {
+    margin: 10px 0;
+}
+
+.resumen .caja-resumen:first-child {
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.resumen .caja-resumen:first-child label {
+    font-size: 18px !important;
+}
+
+.resumen .caja-resumen fieldset {
+    float: left;
+    width: 50%;
+}
+
+.example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+}
+
+.example-button-row {
+    display: table-cell;
+    width: 490px;
+}
+
+.example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+
+.filter-buttom {
+    margin: 5px 10px 0 0 !important;
+    display: block;
+}
+
+.z-depth-1 {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.window-content-wrapper {
+    min-width: 450px !important;
+}
+
+.wc-perso {
+    //   background-color: map-get($map, primary-light) !important;
+    //   color: map-get($map, text-on-primary-light) !important;
+    padding: 5px;
+}
+
+.fondo-ventana {
+    // background-color: rgba(128, 128, 128, 0.18);
+    //   background-color: map-get($map, primary) !important;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+@each $theme,
+$map in $themes {
+    body.#{$theme} {
+        .window-header {
+            padding: 6px 12px !important;
+            background-color: map-get($map, secondary) !important;
+        }
+
+        .fondo-ventana {
+            // background-color: rgba(128, 128, 128, 0.18);
+            background-color: map-get($map, primary) !important;
+            width: 100%;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .window-wrapper {
+            min-width: 400px !important;
+            background-color: map-get($map, primary-light) !important;
+            color: map-get($map, text-on-primary-light) !important;
+        }
+
+        .wc-perso {
+            background-color: map-get($map, primary-light) !important;
+            color: map-get($map, text-on-primary-light) !important;
+            padding: 5px;
+        }
+
+        .mat-menu-content {
+            max-height: 360px;
+            background: map-get($map, primary-light);
+        }
+
+        .mat-select-value-text {
+            color: unset;
+        }
+
+        .mat-form-field-appearance-legacy .mat-form-field-underline {
+            bottom: 0px;
+        }
+
+        .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+            padding-bottom: 0px;
+        }
+
+        .mod-formly-select {
+            background: map-get($map, text-primary-accent);
+            border-radius: 4px;
+        }
+
+        .ngx-datatable {
+            color: map-get($map, text-on-primary);
+            background-color: map-get($map, primary);
+            border: 1px solid map-get($map, primary-light);
+
+            .datatable-row-even {
+                background-color: map-get($map, table-row-even);
+
+                &:not(.active) {
+                    background-color: map-get($map, table-row-even);
+
+                    &:hover {
+                        .datatable-row-group {
+                            background-color: lighten(map-get($map, table-row-even), 5%);
+                        }
+                    }
+                }
+            }
+
+            .datatable-row-odd {
+                background-color: map-get($map, table-row-odd);
+
+                &:not(.active) {
+                    background-color: map-get($map, table-row-odd);
+
+                    &:hover {
+                        .datatable-row-group {
+                            background-color: lighten(map-get($map, table-row-odd), 5%);
+                        }
+                    }
+                }
+            }
+
+            .datatable-header {
+                background-color: map-get($map, primary);
+
+                .datatable-header-cell {
+                    color: map-get($map, text-alt);
+                }
+            }
+
+            .datatable-body {
+                .datatable-body-row {
+                    border-top: 0px solid transparent;
+                }
+            }
+
+            .datatable-footer {
+                color: map-get($map, text-on-primary);
+
+                .datatable-pager a {
+                    color: map-get($map, text-on-primary);
+                }
+            }
+        }
+
+        button svg path {
+            fill: map-get($map, mat-icon-color) !important;
+        }
+
+        .mat-checkbox-checked .mat-checkbox-background {
+            background-color: map-get($map, secondary) !important;
+        }
+
+        .field-popup label[for="key"] {
+            text-transform: uppercase;
+            font-size: 1.45em !important;
+            letter-spacing: 0.025em;
+            color: map-get($map, text-on-primary-dark);
+            background-color: map-get($map, primary-dark);
+            display: -ms-flexbox;
+            -ms-flex-pack: center;
+            -ms-flex-align: center;
+            padding: 5px 10px;
+            height: 40px;
+            float: left;
+            width: 31%;
+        }
+
+        .btn-info {
+            color: map-get($map, text-on-secondary) !important;
+            background-color: map-get($map, secondary) !important;
+            border-color: map-get($map, secondary) !important;
+        }
+
+        .btn-info:hover {
+            color: ligthen(map-get($map, text-on-secondary), 5%) !important;
+            background-color: ligthen(map-get($map, secondary), 5%) !important;
+            border-color: ligthen(map-get($map, secondary), 5%) !important;
+        }
+
+        .gu-transit {
+            background-color: map-get($map, primary-dark);
+            color: map-get($map, text-on-primary-dark);
+        }
+
+        .resizable-drag-btn {
+            background-color: map-get($map, primary);
+        }
+
+        .dropdown-item:hover {
+            background-color: lighten(map-get($map, primary-light), 10%);
+            color: map-get($map, secondary);
+            text-decoration: none;
+        }
+    }
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+body.resumen {
+    border: 2px solid #000;
+    width: 1050px;
+    display: block;
+    margin: 10px auto
+}
+
+.body-content.resumen:after {
+    content: "CONFIDENCIAL";
+    font-size: 13em;
+    color: rgba(52, 166, 214, 0.4);
+    z-index: 99;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.1;
+    -webkit-pointer-events: none;
+    -moz-pointer-events: none;
+    -ms-pointer-events: none;
+    -o-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+    -ms-transform: rotate(-60deg);
+    /*IE9*/
+    -webkit-transform: rotate(-60deg);
+    /*Chrome,Safari,Opera*/
+    transform: rotate(-60deg);
+    -webkit-transform: rotate(-60deg);
+    -moz-transform: rotate(-60deg);
+    -o-transform: rotate(-60deg);
+}
+
+header {
+    position: relative;
+}
+
+.logo {
+    margin: 0 0 20px 0;
+}
+
+.numero-orden {
+    text-align: center;
+    font-size: 25px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    padding: 10px;
+    border: 1px solid #d7d7d7;
+}
+
+.numero-orden .fecha {
+    font-size: 15px;
+}
+
+.title-container {
+    text-align: center;
+}
+
+.titulo-evento {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.resumen {
+    padding: 10px;
+}
+
+.content-datos {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.resumen .titte-ico {
+    font-size: 17px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.resumen h2 {
+    margin: 10px 0;
+}
+
+.resumen .caja-resumen {
+    padding: 10px;
+}
+
+.resumen .caja-resumen .direccion {
+    margin: 10px 0;
+}
+
+.resumen .caja-resumen:first-child {
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.resumen .caja-resumen:first-child label {
+    font-size: 18px !important;
+}
+
+.resumen .caja-resumen fieldset {
+    float: left;
+    width: 50%;
+}
+
+.resumen label {
+    margin: 0 5px 0 0;
+}
+
+.content-internos {
+    padding: 30px;
+}
+
+.content-internos.sectores {
+    padding: 30px;
+}
+
+.interno-sectores {
+    padding: 40px;
+}
+
+.mapa {
+    margin: 10px;
+    width: 300px;
+    float: left;
+
+    ::ng-deep .leaflet-touch .leaflet-bar a {
+        width: 30px;
+    }
+}
+
+.mapa-content {
+    width: 320px !important;
+    height: 320px !important;
+}
+
+.mat-checkbox.incluir-orden {
+    float: left;
+    margin-left: -10px;
+}
+
+.titulo-cis.clearfix {
+    background-color: #00bcd4;
+    color: white;
+    box-shadow: 2px 2px 5px #999;
+}
+
+.titulo-cis.clearfix span p {
+    margin-right: 30px;
+    display: inline;
+}
+
+.titulo-cis.clearfix span p label {
+    line-height: 6px;
+    text-align: justify;
+}
+
+.separador {
+    width: 100%;
+    height: 2px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.botonF1 {
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    background: #5cb85c;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 36px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: .3s;
+}
+
+span {
+    transition: .5s;
+}
+
+.botonF1:hover span {
+    transform: rotate(360deg);
+}
+
+.botonF1:active {
+    transform: scale(1.1);
+}
+
+.contenedor {
+    width: 90px;
+    height: 240px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.btn-flotante {
+    z-index: 100;
+    position: fixed;
+}
+
+.espace-check {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.card-steper {
+    width: 98%;
+    float: left;
+    height: calc(98vh - 332px);
+    margin: 10px;
+}
+
+.card-adjunto {
+    width: 98%;
+    float: left;
+    margin: 10px;
+}
+
+.scrollable {
+    overflow: auto;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.ng-star-inserted .fa.fa-cloud-download {
+    color: #5cb85c;
+}
+
+.ng-star-inserted .fa.fa-trash {
+    color: red;
+}
+
+.img {
+    border-radius: 1px;
+    margin-left: 20px;
+    padding: 2px;
+    width: 215px;
+    height: 70px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background: url(../../../assets/img/Same_1.png);
+    background-size: cover;
+}
+
+.sames {
+    border-radius: 1px;
+    margin-left: 15px;
+    padding: 2px;
+    width: 722px;
+    height: 405px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background: url(../../../assets/img/sames_1.jpg);
+    background-size: cover;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.fechaHora {
+    font-weight: bold;
+    color: #008100;
+}

@@ -13,7 +13,8 @@
     ],
   },
   "angularCompilerOptions": {
-    "preserveSymlinks": true
+    "preserveSymlinks": true,
+    "enableIvy": false
   },
   "exclude": [
     "test.ts",

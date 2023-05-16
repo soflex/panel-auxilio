@@ -62,7 +62,6 @@
     "net": "^1.0.2",
     "ng-bootstrap-modal": "^1.1.19",
     "ng-rn": "^1.0.0",
-    "ng2-charts": "^2.2.3",
     "ng2-datetime-picker": "^0.15.1",
     "ng2-dragula": "^2.1.1",
     "ngx-mat-select-search": "^3.1.0",

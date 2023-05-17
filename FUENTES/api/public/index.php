@@ -39,6 +39,7 @@ include_once "globales.php";
 
 /************* API *************/
 include_once 'controllers/estado.php';
+include_once 'controllers/panel-auxilio.php';
 /****/
 
 $app->get('/', function (Request $request, Response $response, $args) {

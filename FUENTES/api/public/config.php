@@ -8,8 +8,8 @@ $ambiente = "dev";
 
 if($ambiente == "dev"){
 
-    defined ('DB_HOST') ? null : define('DB_HOST','192.168.1.32');
-    defined ('DB_DATABASE') ? null : define('DB_DATABASE', "sae911_VG");
+    defined ('DB_HOST') ? null : define('DB_HOST','192.168.1.20,1442');
+    defined ('DB_DATABASE') ? null : define('DB_DATABASE', "SAE911");
     defined ('DB_USERNAME') ? null : define('DB_USERNAME', "sa");
     defined ('DB_PASSWORD') ? null : define('DB_PASSWORD', "Digital23");
     

@@ -14,6 +14,9 @@ import { isDebuggerStatement } from 'typescript';
 import { SesionService } from '@soflex/sisep-base';
 import { Formatear } from '../../shared/formatear';
 
+import { PanelAuxilio } from '../../domain/panel-auxilio';
+import { PanelAuxilioService } from '../../services/panel-auxilio.service';
+
 @Component({
   selector: 'app-panel-auxilio',
   templateUrl: './panel-auxilio.component.html',
@@ -26,24 +29,34 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
   fecha: string;
   hora: string;
 
-  listaEventos: any[] = [];
+  base: string;
+  listaEventos: PanelAuxilio[] = [];
+  puedeVerNoticias: boolean;
 
-  dataSource: MatTableDataSource<any> = new MatTableDataSource();
+  dataSource: MatTableDataSource<PanelAuxilio> = new MatTableDataSource();
   cols: MaterialTableColumn[] = [];
 
-  constructor(private preloadService: PreloadService,
+  timeLap: number;
+
+  constructor(private loader: LoaderService,
     private cd: ChangeDetectorRef,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private sesionService: SesionService,
     protected themeService: ThemeService,
+    private configService: ConfigService,
     private formBuilder: FormBuilder,
+    private _panelAuxilioService: PanelAuxilioService,
     private dialogService: DialogService) {
     super(themeService);
   }
 
   ngOnInit(): void {
     super.ngOnInit();
+    
+    this.puedeVerNoticias = this.sesionService.tienePermiso('AUXILIO_NOTICIAS');
+    this.timeLap = this.configService.get("TIME_LAP")
+
     this.obtenerFechaYhora();
     const setIntervalConst: ReturnType<typeof setInterval> = setInterval(() => {
       this.detectChanges();
@@ -51,6 +64,10 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
     }, 1000)
     this.setCols();
     this.obtenerDatosEventos();
+    const setIntervalListaConst: ReturnType<typeof setInterval> = setInterval(() => {
+      this.detectChanges();
+      this.obtenerDatosEventos()
+    }, this.timeLap)
     this.detectChanges();
   }
 
@@ -68,25 +85,25 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
   obtenerFechaYhora() {
     var date = new Date();
     this.fecha = date.toLocaleDateString('en-US');
-    this.hora = date.toLocaleTimeString('en-US');
+    this.hora = date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   }
 
   setCols() {
     this.detectChanges();
     this.cols = [
-      { prop: 'trasFechaCreacion', name: 'Dato 1', width: '20%', cellTransform: Formatear.fecha },
-      { prop: 'trasRealizadoGFH', name: 'Dato 2', width: '20%', cellTransform: Formatear.fecha },
-      { prop: 'estaDescripcion', name: 'Dato 3', width: '20%', cellTemplate: this.estadoTemplate },
-      { prop: 'trasPacienteNombre', name: 'Dato 4', width: '20%' },
-      { prop: 'trasPacienteApellido', name: 'Dato 5', width: '20%' },
-
+      { prop: 'nroAuxilio', name: 'N° Auxilio', width: '10%' },
+      { prop: 'signos', name: 'Signos', width: '40%' },
+      { prop: 'ubicacion', name: 'Ubicación', width: '40%' },
+      { prop: 'demora', name: 'Demora', width: '10%' },
     ];
   }
 
   obtenerDatosEventos() {
-    
-    this.actualizarDatosEventos();
-
+    this._panelAuxilioService.postAny(null, 'lista-panel-auxilio').subscribe((response: PanelAuxilio[]) => {
+      this.listaEventos = response || [];     
+      this.base = response[0].encabezado;
+      this.actualizarDatosEventos();
+    });
   }
 
   actualizarDatosEventos() {

@@ -1,6 +1,6 @@
 export class PanelAuxilio {
 
-    nroAuxilio: number;
+    nroAuxilio: string;
 
     signos: string;
 
@@ -11,7 +11,7 @@ export class PanelAuxilio {
     estado: string;
 
     fechaInicio: string;
-
+    
     fechaDerivacion: string;
 
     demora: string;
@@ -26,8 +26,10 @@ export class PanelAuxilio {
 
     cssClass: string;
 
-    onDeserialize(e: PanelAuxilio) {
-        e.cssClass = this.colorFondo;
-    }
+    onDeserialize(e: PanelAuxilio, json: any) {
+		if (e.colorFondo) {
+			e.cssClass = e.colorFondo;
+		}
+	}
 
 }

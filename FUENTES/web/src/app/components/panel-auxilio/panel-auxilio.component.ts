@@ -5,7 +5,7 @@ import { MatTabGroup } from '@angular/material/tabs';
 import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { PreloadService, Theming, DialogService, LoaderService, MapaService, MaterialTableColumn, Deserialize } from '@soflex/sisep-base';
+import { PreloadService, Theming, DialogService, LoaderService, MapaService, MaterialTableColumn } from '@soflex/sisep-base';
 import { ConfigService } from '../../services/config.service';
 import { MenuContextualComponent } from '@soflex/sisep-base';
 import { MatTableDataSource } from '@angular/material/table';
@@ -26,6 +26,7 @@ import { NoticiaService } from '../../services/noticia.service';
 })
 export class PanelAuxilioComponent extends Theming implements OnInit {
   @ViewChild('estadoTemplate') estadoTemplate: TemplateRef<any>;
+  displayedColumns: string[] = ['numauxilio', 'signos', 'ubicacion', 'demora'];
 
   menu: any[];
   fecha: string;
@@ -129,6 +130,9 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
     this._panelAuxilioService.postAny(null, 'lista-panel-auxilio').subscribe((response: PanelAuxilio[]) => {
       this.listaEventos = response || [];
       this.base = response[0].encabezado;
+      // this.listaEventos.forEach((item) => {
+      //   item.cssClass = 'colorFila'
+      // })
       this.actualizarDatosEventos();
     });
   }

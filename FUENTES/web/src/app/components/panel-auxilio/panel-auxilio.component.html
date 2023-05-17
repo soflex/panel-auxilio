@@ -13,7 +13,7 @@
                     <div class="img"></div>
                 </div>
                 <div style="align-self: center; margin-top: 5px;" class="col-md-7">
-                    <h2 class="fechaHora">{{base}}</h2>
+                    <h1 class="fechaHora">{{base}}</h1>
                 </div>
                 <div style="align-self: center; margin-top: 5px;" class="col-md-3">
                     <h2 class="fechaHora">{{fecha}} | {{hora}}</h2>
@@ -25,9 +25,43 @@
         <mat-card class="grilla" style="margin-top: 5px; margin-left: 5px;">
             <div class="row">
                 <div class="full-width col-md-12" style="padding: 10px; margin-top:3px">
-                    <sisep-table [tipo]="'material'" [rows]="dataSource" [columns]="cols" [filter]="false"
-                        [pagination]="true" [pageSize]="10">
-                    </sisep-table>
+                    <!-- <sisep-table [tipo]="'material'" [rows]="dataSource" [columns]="cols" [filter]="false"
+                        [pagination]="true" [pageSize]="13">
+                    </sisep-table> -->
+
+                    <!-- <material-table [rows]="dataSource" [columns]="cols" 
+                        [filter]="false" [pagination]="true" [pageSize]="12">
+                    </material-table> -->
+
+                    <table mat-table [dataSource]="dataSource.data" class="mat-elevation-z8">
+                      
+                        <!-- N° auxilio Column -->
+                        <ng-container style="width:25%" matColumnDef="numauxilio">
+                          <th mat-header-cell *matHeaderCellDef> No. Auxilio </th>
+                          <td mat-cell *matCellDef="let element"> {{element.nroAuxilio}} </td>
+                        </ng-container>
+                      
+                        <!-- Signos Column -->
+                        <ng-container style="width:25%" matColumnDef="signos">
+                          <th mat-header-cell *matHeaderCellDef> Signos </th>
+                          <td style="background-color: aquamarine;" mat-cell *matCellDef="let element"> {{element.signos ? element.signos.substr(0,70) : ''}} </td>
+                        </ng-container>
+                      
+                        <!-- Ubicacion Column -->
+                        <ng-container style="width:25%" matColumnDef="ubicacion">
+                          <th mat-header-cell *matHeaderCellDef> Ubicación </th>
+                          <td mat-cell *matCellDef="let element"> {{element.ubicacion ? element.ubicacion.substr(0,70) : ''}} </td>
+                        </ng-container>
+                      
+                        <!-- Demora Column -->
+                        <ng-container style="width:25%" matColumnDef="demora">
+                          <th mat-header-cell *matHeaderCellDef> Demora </th>
+                          <td mat-cell *matCellDef="let element"> {{element.demora}} </td>
+                        </ng-container>
+                      
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
                 </div>
             </div>
         </mat-card>

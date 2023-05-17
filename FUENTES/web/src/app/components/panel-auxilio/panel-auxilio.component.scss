@@ -715,7 +715,11 @@ span {
     color: #019b67;
 }
 
-::ng-deep .color:not(.row-seleccionado) {
+table {
+    width: 100%;
+  }
+
+::ng-deep .colorFila:not(.row-seleccionado) {
     background-color: rgb(245, 171, 171);
     
     .mat-cell {

@@ -11,7 +11,7 @@ export class PanelAuxilio {
     estado: string;
 
     fechaInicio: string;
-    
+
     fechaDerivacion: string;
 
     demora: string;
@@ -23,5 +23,11 @@ export class PanelAuxilio {
     colorFondo: string;
 
     colorLetra: string;
+
+    cssClass: string;
+
+    onDeserialize(e: PanelAuxilio) {
+        e.cssClass = this.colorFondo;
+    }
 
 }

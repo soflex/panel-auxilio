@@ -6,6 +6,7 @@
     </div> -->
 
     <div body class="body-content" [ngClass]="theme">
+
         <mat-card style="margin-top: 5px; margin-left: 5px;">
             <div class="row">
                 <div class="col-md-2">
@@ -19,24 +20,25 @@
                 </div>
             </div>
         </mat-card>
-        <mat-card style="margin-top: 5px; margin-left: 5px;">
+
+
+        <mat-card class="grilla" style="margin-top: 5px; margin-left: 5px;">
             <div class="row">
-                <!-- <div class="col-md-6">
-                    <div class="sames"></div>
-                </div> -->
-                <div class="col-md-12">
-                    <div class="full-width" style="padding: 10px; margin-top:3px">
-                        <sisep-table [tipo]="'material'" [rows]="dataSource" [columns]="cols" [filter]="false"
-                            [pagination]="true" [pageSize]="10">
-                        </sisep-table>
-                    </div>
+                <div class="full-width col-md-12" style="padding: 10px; margin-top:3px">
+                    <sisep-table [tipo]="'material'" [rows]="dataSource" [columns]="cols" [filter]="false"
+                        [pagination]="true" [pageSize]="10">
+                    </sisep-table>
                 </div>
             </div>
         </mat-card>
+
+
         <mat-card *ngIf="puedeVerNoticias" style="margin-top: 5px; margin-left: 5px;">
-            <div class="col-md-12">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit aliquet laoreet ligula euismod etiam fermentum primis lectus lobortis nisi, litora pellentesque facilisi iaculis duis vitae nullam varius pharetra sem sed senectus netus natoque dictum. In porta sociosqu primis metus pharetra cubilia dictum at volutpat nulla eu, feugiat lacus nec molestie tortor eros sodales hac nibh. Vel magna curabitur senectus ultricies metus rhoncus ultrices, auctor sodales vitae gravida dictum ullamcorper diam, iaculis sollicitudin molestie facilisis pharetra laoreet.
+            <div class="row">
+                <h6 style="margin-left: 15px;">Noticias: </h6>
+                <div class="col-md-12">{{noticiaActual}}</div>
             </div>
+            
         </mat-card>
     </div>
 </sisep-base>

@@ -17,14 +17,10 @@
 }
 
 .grilla {
-    width: calc(98% - 15px);
-    float: left;
-    min-height: calc(98vh - 60px);
-    margin: 10px 5px;
-    margin-left: 25px;
-
+    width: calc(100% - 15px);
     ::ng-deep .mat-cell {
-        font-size: 13px !important;
+        font-size: 16px !important;
+        height: 30px !important;
     }
 
 }
@@ -692,11 +688,11 @@ span {
     border-radius: 1px;
     margin-left: 20px;
     padding: 2px;
-    width: 150px;
+    width: 180px;
     height: 50px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background: url(../../../assets/img/Same_1.png);
+    background: url(../../../assets/img/same.png);
     background-size: cover;
 }
 
@@ -716,5 +712,14 @@ span {
 
 .fechaHora {
     font-weight: bold;
-    color: #008100;
+    color: #019b67;
+}
+
+::ng-deep .color:not(.row-seleccionado) {
+    background-color: rgb(245, 171, 171);
+    
+    .mat-cell {
+        color: red!important;
+        font-weight: bold;
+    }
 }

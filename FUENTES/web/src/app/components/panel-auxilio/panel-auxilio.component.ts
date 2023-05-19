@@ -1,18 +1,13 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { MatTabGroup } from '@angular/material/tabs';
-import * as moment from 'moment';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, TemplateRef } from '@angular/core';
+import { FormBuilder} from '@angular/forms';
+
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { PreloadService, Theming, DialogService, LoaderService, MapaService, MaterialTableColumn } from '@soflex/sisep-base';
+import { Theming, DialogService, LoaderService, MaterialTableColumn } from '@soflex/sisep-base';
 import { ConfigService } from '../../services/config.service';
-import { MenuContextualComponent } from '@soflex/sisep-base';
 import { MatTableDataSource } from '@angular/material/table';
 import { ThemeService } from '@soflex/sisep-base';
-import { isDebuggerStatement } from 'typescript';
 import { SesionService } from '@soflex/sisep-base';
-import { Formatear } from '../../shared/formatear';
 
 import { PanelAuxilio } from '../../domain/panel-auxilio';
 import { PanelAuxilioService } from '../../services/panel-auxilio.service';
@@ -28,6 +23,8 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
   @ViewChild('estadoTemplate') estadoTemplate: TemplateRef<any>;
   displayedColumns: string[] = ['numauxilio', 'signos', 'ubicacion', 'demora'];
 
+  infoOnOff: boolean;
+  newsOnOf: boolean;
   menu: any[];
   fecha: string;
   hora: string;
@@ -47,15 +44,12 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
 
   constructor(private loader: LoaderService,
     private cd: ChangeDetectorRef,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
     private sesionService: SesionService,
     protected themeService: ThemeService,
     private configService: ConfigService,
-    private formBuilder: FormBuilder,
     private _panelAuxilioService: PanelAuxilioService,
     private _noticiasService: NoticiaService,
-    private dialogService: DialogService) {
+    ) {
     super(themeService);
   }
 

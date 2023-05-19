@@ -13,6 +13,9 @@ import { SisepBaseModule } from '@soflex/sisep-base';
 import { ConfigService } from './services/config.service';
 import { SisepBaseConfigFactory } from './config/sisep-base-config-factory';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 
 SisepBaseModule.forRoot({
   useFactory: SisepBaseConfigFactory,
@@ -27,10 +30,12 @@ SisepBaseModule.forRoot({
     CommonModule,
     BrowserModule,
     AppRoutingModule,
+    MatIconModule,
     NoopAnimationsModule,
     HttpClientModule,
     MatStepperModule,
     SisepBaseModule,
+    MatButtonModule,
     SharedModule,
     MatTableModule,
     MatGridListModule,

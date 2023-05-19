@@ -1,82 +1,146 @@
-<sisep-base [titulo]="'PANEL DE AUXILIO'" [subtitulo]="'Lista de eventos'" [configurar]="false"
-    [verBuscadorDirecciones]="false" [menu]="menu">
-
-    <!-- <div botones class="menu-admin">
-        <app-menu></app-menu>
-    </div> -->
-
-    <div body class="body-content" [ngClass]="theme">
-
-        <mat-card style="margin-top: 5px; margin-left: 5px;">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="img"></div>
-                </div>
-                <div style="align-self: center; margin-top: 5px;" class="col-md-7">
-                    <h1 class="fechaHora">{{base}}</h1>
-                </div>
-                <div style="align-self: center; margin-top: 5px;" class="col-md-3">
-                    <h2 class="fechaHora">{{fecha}} | {{hora}}</h2>
-                </div>
-            </div>
-        </mat-card>
-
-
-        <mat-card class="grilla" style="margin-top: 5px; margin-left: 5px;">
-            <div class="row">
-                <div class="full-width col-md-12" style="padding: 10px; margin-top:3px">
-                    <!-- <sisep-table [tipo]="'material'" [rows]="dataSource" [columns]="cols" [filter]="false"
-                        [pagination]="true" [pageSize]="13">
-                    </sisep-table> -->
-
-                    <!-- <material-table [rows]="dataSource" [columns]="cols" 
-                        [filter]="false" [pagination]="true" [pageSize]="12">
-                    </material-table> -->
-
-                    <table mat-table [dataSource]="dataSource.data" class="mat-elevation-z8">
-                      
-                        <!-- N° auxilio Column -->
-                        <ng-container style="width:25%" matColumnDef="numauxilio">
-                          <th mat-header-cell *matHeaderCellDef> No. Auxilio </th>
-                          <td mat-cell *matCellDef="let element"> {{element.nroAuxilio}} </td>
-                        </ng-container>
-                      
-                        <!-- Signos Column -->
-                        <ng-container style="width:25%" matColumnDef="signos">
-                          <th mat-header-cell *matHeaderCellDef> Signos </th>
-                          <td mat-cell *matCellDef="let element"> {{element.signos ? element.signos.substr(0,70) : ''}} </td>
-                        </ng-container>
-                      
-                        <!-- Ubicacion Column -->
-                        <ng-container style="width:25%" matColumnDef="ubicacion">
-                          <th mat-header-cell *matHeaderCellDef> Ubicación </th>
-                          <td mat-cell *matCellDef="let element"> {{element.ubicacion ? element.ubicacion.substr(0,70) : ''}} </td>
-                        </ng-container>
-                      
-                        <!-- Demora Column -->
-                        <ng-container style="width:25%" matColumnDef="demora">
-                          <th mat-header-cell *matHeaderCellDef> Demora </th>
-                          <td mat-cell *matCellDef="let element"> {{element.demora}} </td>
-                        </ng-container>
-                      
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                      </table>
-                </div>
-            </div>
-        </mat-card>
-
-
-        <mat-card *ngIf="puedeVerNoticias" style="margin-top: 5px; margin-left: 5px;">
-            <div class="row">
-                <h6 style="margin-left: 15px;">Noticias: </h6>
-                <div class="col-md-12">{{noticiaActual}}</div>
-            </div>
-            
-        </mat-card>
+<div class="main-container">
+    <div class="top-bar">
+        <div class="title">Panel de auxilio</div>
+        <div class="icon">
+            <button mat-icon-button class="same-logo"></button>
+        </div>
     </div>
-</sisep-base>
+    <div class="info-header" [ngClass]="{'showInfo' : !infoOnOff, 'hideInfo': infoOnOff}">
+        <div class="collapse">
+            <button mat-icon-button (click)="infoOnOff = !infoOnOff" ><mat-icon *ngIf="!infoOnOff">expand_less</mat-icon><mat-icon *ngIf="infoOnOff">expand_more</mat-icon></button>
+            <div>
+                <div class="title">
+                    <h2>HTAL DR. JM RAMOS MEJIA</h2>
+                    <h4>12:00 5/18/2023</h4>
+                </div>
+            </div>
+        </div>
+        <div class="left">
+            <div class="content-img">
+                <div class="img"></div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="title">
+                <h1>HTAL DR. JM RAMOS MEJIA</h1>
+                <h2>Informacion extra</h2>
+                <span>Informacion extra</span>
+            </div>
+            <div class="hour">
+                     <h4>12:00 <b>hs</b></h4>
+                    <span>5/18/2023</span>
+            </div>
+        </div>
+    </div>
 
-<ng-template #estadoTemplate let-row="row" let-value="value">
-    <div class="estado-grilla" [style.background]="row.estaColor">{{row.estaDescripcion}}</div>
-</ng-template>
+    <div class="content" [ngClass]="{'changeSize': infoOnOff, 'resetSize': !infoOnOff }">
+         <div class="rows-name">
+            <p class="nro-auxilio">Nro. Auxilio</p>
+            <p class="signos">Signos</p>
+            <p class="ubicacion">Ubicacion</p>
+            <p class="demora">Demora</p>
+         </div>
+         <div class="table">
+            <div class="element red">
+                <div class="nro-auxilio">1363854</div>
+                <div class="signos"><span>A I </span>TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE</div>
+                <div class="ubicacion">ALPI SEDE MARIO BRAVO - UNIDAD PEDIATRIA Y TERAPIAS MANUALES Calle</div>
+                <div class="demora">712:27:02</div>
+            </div>
+            <div class="element yellow">
+                <div class="nro-auxilio">1363252</div>
+                <div class="signos"><span>D </span>PALIDEZSUDORACION, E - PALPITACIONES</div>
+                <div class="ubicacion">ASOCIACION ARGENTINA DE PESCA calle COMBATE DE LOS pozos 552</div>
+                <div class="demora">712:27:02</div>
+            </div>
+            <div class="element green">
+                <div class="nro-auxilio">1366851</div>
+                <div class="signos"><span>E </span>PALPITACIONES</div>
+                <div class="ubicacion">OBELISCO - Calle AV CORRIENTES 1 OS6</div>
+                <div class="demora">712:27:02</div>
+            </div>
+            <div class="element green">
+                <div class="nro-auxilio">1363458</div>
+                <div class="signos"><span>C </span>TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE</div>
+                <div class="ubicacion">ALPI SEDE MARIO BRAVO - UNIDAD PEDIATRIA Y TERAPIAS MANUALES Calle</div>
+                <div class="demora">712:27:02</div>
+            </div>
+            <div class="element red">
+                <div class="nro-auxilio">1464854</div>
+                <div class="signos"><span>A I </span>TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE</div>
+                <div class="ubicacion">ALPI SEDE MARIO BRAVO - UNIDAD PEDIATRIA Y TERAPIAS MANUALES Calle</div>
+                <div class="demora">712:27:02</div>
+            </div>
+            <div class="element green">
+                <div class="nro-auxilio">132394</div>
+                <div class="signos"><span>A I </span>TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE</div>
+                <div class="ubicacion">ALPI SEDE MARIO BRAVO - UNIDAD PEDIATRIA Y TERAPIAS MANUALES Calle</div>
+                <div class="demora">712:27:02</div>
+            </div>
+            <div class="element red">
+                <div class="nro-auxilio">1963954</div>
+                <div class="signos"><span>A I </span>TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE</div>
+                <div class="ubicacion">ALPI SEDE MARIO BRAVO - UNIDAD PEDIATRIA Y TERAPIAS MANUALES Calle</div>
+                <div class="demora">712:27:02</div>
+            </div>
+            <div class="element green">
+                <div class="nro-auxilio">1363854</div>
+                <div class="signos"><span>A I </span>TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE</div>
+                <div class="ubicacion">ALPI SEDE MARIO BRAVO - UNIDAD PEDIATRIA Y TERAPIAS MANUALES Calle</div>
+                <div class="demora">712:27:02</div>
+            </div>
+         </div>
+    </div>
+    
+    <div class="bottom" [ngClass]="{'showNews': !newsOnOf, 'hideNews': newsOnOf}">
+        <div class="news">
+            <div class="item-news">
+                <mat-icon>info</mat-icon>
+                <div>
+                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
+                </div>
+            </div>
+            <div class="item-news">
+                <mat-icon>info</mat-icon>
+                <div>
+                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
+                </div>
+            </div>
+            <div class="item-news">
+                <mat-icon>info</mat-icon>
+                <div>
+                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
+                </div>
+            </div>
+            <div class="item-news">
+                <mat-icon>info</mat-icon>
+                <div>
+                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
+                </div>
+            </div>
+            <div class="item-news">
+                <mat-icon>info</mat-icon>
+                <div>
+                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
+                </div>
+            </div>
+            <div class="item-news">
+                <mat-icon>info</mat-icon>
+                <div>
+                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
+                </div>
+            </div>
+            <div class="item-news">
+                <mat-icon>info</mat-icon>
+                <div>
+                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
+                </div>
+            </div>
+        </div>
+        <div class="icon">
+            <button mat-flat-button (click)="newsOnOf = !newsOnOf"> <mat-icon *ngIf="!newsOnOf">expand_more</mat-icon><mat-icon *ngIf="newsOnOf">expand_less</mat-icon></button>
+            <b>Noticias | <span>40</span></b>
+        </div>
+    </div>
+
+</div>

@@ -122,7 +122,7 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
       this.detectChanges();
       this.obtenerFechaYhora()
     }, 1000)
-
+    debugger;
     this.obtenerDatosEventos();
     const setIntervalEventoConst: ReturnType<typeof setInterval> = setInterval(() => {
       this.detectChanges();
@@ -199,6 +199,7 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
 
   obtenerDatosEventos() {
     this._panelAuxilioService.postAny(null, 'lista-panel-auxilio').subscribe((response: PanelAuxilio[]) => {
+      debugger;
       this.listaEventos = response || [];
       console.log(this.listaEventos)
       this.base = response[0].encabezado;

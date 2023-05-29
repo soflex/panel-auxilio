@@ -40,9 +40,9 @@
             </ng-container>
           </div>
           <div class="table">
-            <div class="element" [ngClass]="{'red': item.prioridad === 'ROJO', 'green': item.prioridad === 'VERDE', 'yellow': item.prioridad === 'AMARILLO', 'azul': item.prioridad === 'COVID'}" *ngFor="let item of items">
+            <div class="element" [ngClass]="{'red': item.colorFila === 'ROJO', 'green': item.colorFila === 'VERDE', 'yellow': item.colorFila === 'AMARILLO', 'azul': item.colorFila === 'COVID'}" *ngFor="let item of listaEventos">
               <ng-container class="element" *ngFor="let column of columnasPanel">
-                <div [class]="column.prop"  [ngClass]="{'hidden': !isColumnVisible(column)}" [style.width]="column.width">
+                <div [class]="column.prop" [ngClass]="{'hidden': !isColumnVisible(column)}" [style.width]="column.width">
                   {{ item[column.prop] }}
                 </div>
               </ng-container>

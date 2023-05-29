@@ -202,9 +202,20 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
       this.listaEventos = response || [];
       console.log(this.listaEventos)
       this.base = response[0].encabezado;
-      // this.listaEventos.forEach((item) => {
-      //   item.cssClass = 'colorFila'
-      // })
+      this.listaEventos.forEach((item) => {
+          if( item.prioridad.toLocaleLowerCase().indexOf("ROJO".toLocaleLowerCase()) > -1){
+            item.colorFila = "ROJO"
+          }
+          else if( item.prioridad.toLocaleLowerCase().indexOf("AMARILLO".toLocaleLowerCase()) > -1){
+            item.colorFila = "AMARILLO"
+          } else if( item.prioridad.toLocaleLowerCase().indexOf("VERDE".toLocaleLowerCase()) > -1){
+            item.colorFila = "VERDE"
+          } else {
+            item.colorFila= "COVID"
+          }
+
+        item.cssClass = 'colorFila'
+      })
       this.actualizarDatosEventos();
     });
   }

@@ -14,11 +14,19 @@ import { PanelAuxilioService } from '../../services/panel-auxilio.service';
 import { Noticia } from '../../domain/noticia';
 import { NoticiaService } from '../../services/noticia.service';
 
+export interface columnas{
+  prop: string;
+  name: string;
+  visible: boolean;
+  width: string;
+}
+
 @Component({
   selector: 'app-panel-auxilio',
   templateUrl: './panel-auxilio.component.html',
   styleUrls: ['./panel-auxilio.component.scss']
 })
+
 export class PanelAuxilioComponent extends Theming implements OnInit {
   @ViewChild('estadoTemplate') estadoTemplate: TemplateRef<any>;
   displayedColumns: string[] = ['numauxilio', 'signos', 'ubicacion', 'demora'];
@@ -28,7 +36,7 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
   menu: any[];
   fecha: string;
   hora: string;
-
+  
   base: string;
   noticiaActual: string;
   count: number = 0;
@@ -42,7 +50,56 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
 
   timeLap: number;
 
-  constructor(private loader: LoaderService,
+  columnasPanel: columnas[];
+
+  items: any[] =[
+    {
+      nroAuxilio : 13649,
+      signos: "TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE",
+      ubicacion : "ASOCIACION ARGENTINA DE PESCA calle COMBATE DE LOS pozos 552",
+      demora: "12:43:22",
+      prioridad: "ROJO"
+    },
+    {
+      nroAuxilio : "136499",
+      signos: "TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE",
+      ubicacion : "ASOCIACION ARGENTINA DE PESCA calle COMBATE DE LOS pozos 552",
+      demora: "12:43:22",
+      prioridad: "VERDE"
+    },
+    {
+      nroAuxilio : "136499",
+      signos: "TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE",
+      ubicacion : "ASOCIACION ARGENTINA DE PESCA calle COMBATE DE LOS pozos 552",
+      demora: "12:43:22",
+      prioridad: "AMARILLO"
+    },
+    {
+      nroAuxilio : "136499",
+      signos: "TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE",
+      ubicacion : "ASOCIACION ARGENTINA DE PESCA calle COMBATE DE LOS pozos 552",
+      demora: "12:43:22",
+      prioridad: "COVID"
+    },
+    {
+      nroAuxilio : "136499",
+      signos: "TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE",
+      ubicacion : "ASOCIACION ARGENTINA DE PESCA calle COMBATE DE LOS pozos 552",
+      demora: "12:43:22",
+      prioridad: "AMARILLO"
+
+    },
+    {
+      nroAuxilio : 13649,
+      signos: "TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE TRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVETRAUMATISMO GRAVEFOR CAIOA DE ALTURA - TRAUMATISMO GRAVE",
+      ubicacion : "ASOCIACION ARGENTINA DE PESCA calle COMBATE DE LOS pozos 552",
+      demora: "12:43:22",
+      prioridad: "ROJO"
+    }
+  ]
+
+  constructor(
+    private loader: LoaderService,
     private cd: ChangeDetectorRef,
     private sesionService: SesionService,
     protected themeService: ThemeService,
@@ -85,6 +142,24 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
     this.detectChanges();
   }
 
+  isColumnVisible(column: any): boolean {
+    return column.visible;
+  }
+
+  getDynamicClasses(column: any, item: any): any {
+    const classes = {};
+  
+    // if (!isColumnVisible(column)) {
+    //   classes['hidden'] = true;
+    // }
+  
+    if (item[column.prop]) {
+      classes[item[column.prop]] = true;
+    }
+  
+    return classes;
+  }
+
   detectChanges() {
     if (this.cd && this.cd.detectChanges && !this.cd['destroyed']) {
       this.cd.markForCheck();
@@ -99,13 +174,15 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
   }
 
   setCols() {
+    this.columnasPanel = this.configService.get("COLUMNAS_PANEL");
+
     this.detectChanges();
-    this.cols = [
-      { prop: 'nroAuxilio', name: 'N° Auxilio', width: '10%' },
-      { prop: 'signos', name: 'Signos', width: '40%' },
-      { prop: 'ubicacion', name: 'Ubicación', width: '40%' },
-      { prop: 'demora', name: 'Demora', width: '10%' },
-    ];
+    // this.cols = [
+    //   { prop: 'nroAuxilio', name: 'N° Auxilio', width: '10%' },
+    //   { prop: 'signos', name: 'Signos', width: '40%' },
+    //   { prop: 'ubicacion', name: 'Ubicación', width: '40%' },
+    //   { prop: 'demora', name: 'Demora', width: '10%' },
+    // ];  
   }
 
   obtenerNoticias() {
@@ -123,6 +200,7 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
   obtenerDatosEventos() {
     this._panelAuxilioService.postAny(null, 'lista-panel-auxilio').subscribe((response: PanelAuxilio[]) => {
       this.listaEventos = response || [];
+      console.log(this.listaEventos)
       this.base = response[0].encabezado;
       // this.listaEventos.forEach((item) => {
       //   item.cssClass = 'colorFila'

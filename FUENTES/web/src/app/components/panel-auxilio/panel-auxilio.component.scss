@@ -1,3 +1,7 @@
+.hidden {
+    display: none;
+  }
+
 .main-container{
     height: 100vh;
     overflow: hidden;
@@ -196,34 +200,25 @@
     }
     .content{
         width: 100%;
+        flex-grow: 1;
         height: 53%;
         border-radius: 12px;
         box-sizing: border-box;
+        background-color: #ffffff83;
         padding-top: 7px;
-        // background-color: rgba(78, 73, 73, 0.363);
+        overflow: hidden;
         .rows-name{
             display: flex;
             box-sizing: border-box;
-            padding: 0px 50px;
+            padding: 0px 30px;
             width: 100%;
             justify-content: space-between;
             p{
                 margin: 0;
                 font-size: 14px;
                 font-weight: bold;
-                color: rgba(54, 54, 54, 0.904);
-                &.nro-auxilio{
-                    width: 5%;
-                }
-                &.signos{
-                    width: 40%;
-                }
-                &.ubicacion{
-                    width: 35%;
-                }
-                &.demora{
-                    width:10%;
-                }
+                color: rgba(54, 54, 54, 0.603);
+                flex-grow: 1;
             }
         }
         .table{
@@ -251,7 +246,6 @@
                   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
                  transition: ease-in-out 0.2s;
                 filter: opacity(1);
-
                 }
                 &.red{
                 border: 1px solid rgba(255, 0, 0, 0.336);
@@ -265,16 +259,24 @@
                     background-color: #E3FFDC;
                     border: 1px solid #1170007e;
                 }
-                .nro-auxilio{
-                    width: 10%;
+                &.azul{
+                    background-color: #dceeff;
+                    border: 1px solid #0031707e;
+                }
+                div{
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                .nroAuxilio{
                     font-size: 20px;
                     font-weight: 900;
                 }
                 .signos{
-                    width: 40%;
                     display: flex;
                     align-items: center;
                     gap: 10px;
+                    font-size: 18px;
                     font-weight: 700;
                     span{
                         font-size: 35px;
@@ -298,7 +300,6 @@
         height: 20%;
         background-color: #ffffff83;
         transition: ease-in-out 0.2s;
-
         border-radius: 12px 12px 0px 0px;
         .news{
             height: 80%;
@@ -331,8 +332,7 @@
                         color: rgb(58, 58, 58) !important;
                         b{
                             margin-right: 5px;
-                        color: rgb(53, 53, 53) !important;
-
+                            color: rgb(53, 53, 53) !important;
                         }
                     }
                 }
@@ -371,14 +371,14 @@
             justify-content: start;
             align-items: center;
             b{
-                color: #009a66;
-                }
+              color: #009a66;
+            }
             button{
                 transform: scale(0.8);
                 background-color: transparent;
                 mat-icon{
                     color: #009a66;
-                     }
+                }
             }
         }
     }

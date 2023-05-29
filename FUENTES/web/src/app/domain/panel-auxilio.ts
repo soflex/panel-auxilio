@@ -26,6 +26,8 @@ export class PanelAuxilio {
 
     cssClass: string;
 
+    colorFila: string;
+
     onDeserialize(e: PanelAuxilio, json: any) {
 		if (e.colorFondo) {
 			e.cssClass = e.colorFondo;

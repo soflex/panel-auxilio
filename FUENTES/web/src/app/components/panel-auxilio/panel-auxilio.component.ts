@@ -169,7 +169,7 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
 
   obtenerFechaYhora() {
     var date = new Date();
-    this.fecha = date.toLocaleDateString('en-US');
+    this.fecha = date.toLocaleDateString('en-GB');
     this.hora = date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   }
 

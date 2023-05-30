@@ -127,5 +127,5 @@
       }
    ],
    "URL_GEO": "http://192.168.1.17/sisep/apps/info-calle/index.php/geo-decoder",
-   "TIME_LAP": 300000
+   "TIME_LAP": 3000
 }

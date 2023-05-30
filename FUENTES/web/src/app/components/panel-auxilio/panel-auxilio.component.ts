@@ -122,7 +122,7 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
       this.detectChanges();
       this.obtenerFechaYhora()
     }, 1000)
-    debugger;
+    
     this.obtenerDatosEventos();
     const setIntervalEventoConst: ReturnType<typeof setInterval> = setInterval(() => {
       this.detectChanges();
@@ -187,8 +187,8 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
 
   obtenerNoticias() {
     this._noticiasService.postAny(null, 'lista-noticia').subscribe((response: Noticia[]) => {
-      this.listaNoticias = response || [];      
-      this.noticiaActual = this.listaNoticias[this.count].noticia;
+      this.listaNoticias = response || [];
+      this.noticiaActual = this.listaNoticias[this.count].noticia || "";
       if (this.count === this.listaNoticias.length) {
         this.count = 0;
       } else {
@@ -199,10 +199,9 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
 
   obtenerDatosEventos() {
     this._panelAuxilioService.postAny(null, 'lista-panel-auxilio').subscribe((response: PanelAuxilio[]) => {
-      debugger;
       this.listaEventos = response || [];
       console.log(this.listaEventos)
-      this.base = response[0].encabezado;
+      this.base = response[0].encabezado || "";
       this.listaEventos.forEach((item) => {
           if( item.prioridad.toLocaleLowerCase().indexOf("ROJO".toLocaleLowerCase()) > -1){
             item.colorFila = "ROJO"

@@ -10,7 +10,7 @@
             <button mat-icon-button (click)="infoOnOff = !infoOnOff" ><mat-icon *ngIf="!infoOnOff">expand_less</mat-icon><mat-icon *ngIf="infoOnOff">expand_more</mat-icon></button>
             <div>
                 <div class="title">
-                    <h2>HTAL DR. JM RAMOS MEJIA</h2>
+                    <h2>{{base}}</h2>
                     <h4>{{ hora }}  {{ fecha }}</h4>
                 </div>
             </div>
@@ -22,7 +22,7 @@
         </div>
         <div class="right">
             <div class="title">
-                <h1>HTAL DR. JM RAMOS MEJIA</h1>
+                <h1>{{base}}</h1>
                 <h2>Informacion extra</h2>
                 <span>Informacion extra</span>
             </div>
@@ -52,54 +52,27 @@
     </div>
     
     <div class="bottom" [ngClass]="{'showNews': !newsOnOf, 'hideNews': newsOnOf}">
+        <div class="icon">
+            <b style="margin-top:5px;margin-left: 15px;">Noticias</b>
+        </div>
         <div class="news">
             <div class="item-news">
                 <mat-icon>info</mat-icon>
                 <div>
-                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
+                <p>{{noticiaActual}}</p>
                 </div>
             </div>
-            <div class="item-news">
+            <!-- <div class="item-news">
                 <mat-icon>info</mat-icon>
                 <div>
                 <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
                 </div>
-            </div>
-            <div class="item-news">
-                <mat-icon>info</mat-icon>
-                <div>
-                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
-                </div>
-            </div>
-            <div class="item-news">
-                <mat-icon>info</mat-icon>
-                <div>
-                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
-                </div>
-            </div>
-            <div class="item-news">
-                <mat-icon>info</mat-icon>
-                <div>
-                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
-                </div>
-            </div>
-            <div class="item-news">
-                <mat-icon>info</mat-icon>
-                <div>
-                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
-                </div>
-            </div>
-            <div class="item-news">
-                <mat-icon>info</mat-icon>
-                <div>
-                <p><b>05/18/2023 09:40hs</b>En un dramático suceso, un paciente gravemente herido ha sido ingresado de emergencia al Hospital Central</p>
-                </div>
-            </div>
+            </div> -->
         </div>
-        <div class="icon">
+        <!-- <div class="icon">
             <button mat-flat-button (click)="newsOnOf = !newsOnOf"> <mat-icon *ngIf="!newsOnOf">expand_more</mat-icon><mat-icon *ngIf="newsOnOf">expand_less</mat-icon></button>
             <b>Noticias | <span>40</span></b>
-        </div>
+        </div> -->
     </div>
 
 </div>

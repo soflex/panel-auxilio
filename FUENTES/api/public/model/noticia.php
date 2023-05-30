@@ -7,7 +7,9 @@ class Noticia
         $db = SQLSRV::connect();
         $results = array();
 
-        $stmt = sqlsrv_query($db, "EXEC dbo.sp_Panel_Auxilios 1, 'noticia'", array());
+        $stmt = sqlsrv_query($db, "EXEC dbo.sp_Panel_Auxilios ?, 'noticia'", array(
+            isset($usuarioId) && $usuarioId != "" ? $usuarioId : null,
+        ));
 
         if ($stmt === false) {
             SQLSRV::error(500, 'Error interno del servidor al obtener la persona', $db);

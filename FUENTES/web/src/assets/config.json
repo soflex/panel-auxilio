@@ -1,10 +1,10 @@
 {
    "API": {
       "default_": "http://192.168.1.30:8081/panel-auxilio/public/index.php/",
-      "default": "http://localhost:8000/panel-auxilio_api/index.php",
+      "default": "/panel-auxilio_api/index.php",
       "geocode": "http://192.168.1.17/sisep/apps/info-calle/index.php/geo-decoder"
    },
-   "API_ADJUNTO": "http://localhost:8000/panel-auxilio_api/index.php/",
+   "API_ADJUNTO": "panel-auxilio_api/index.php/",
    "LOGO_HEADER": "assets/img/logoSisep_[theme].png",
    "TITULO_WEB": "Panel de Auxilio",
    "COLUMNAS_PANEL" : [
@@ -127,5 +127,5 @@
       }
    ],
    "URL_GEO": "http://192.168.1.17/sisep/apps/info-calle/index.php/geo-decoder",
-   "TIME_LAP": 300000
+   "TIME_LAP": 3000
 }

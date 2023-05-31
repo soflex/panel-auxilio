@@ -200,7 +200,6 @@ export class PanelAuxilioComponent extends Theming implements OnInit {
   obtenerDatosEventos() {
     this._panelAuxilioService.postAny(null, 'lista-panel-auxilio').subscribe((response: PanelAuxilio[]) => {
       this.listaEventos = response || [];
-      console.log(this.listaEventos)
       this.base = response[0].encabezado || "";
       this.listaEventos.forEach((item) => {
           if( item.prioridad.toLocaleLowerCase().indexOf("ROJO".toLocaleLowerCase()) > -1){

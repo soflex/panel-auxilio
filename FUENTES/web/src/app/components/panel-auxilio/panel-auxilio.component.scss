@@ -139,10 +139,8 @@
             align-content: center;
             justify-content: center;
             align-items: center;
-
             .content-img {
-                height: 67%;
-                width: 61%;
+                height: 75%;
                 box-sizing: border-box;
                 padding: 10px;
                 background-color: #ffffff;
@@ -150,14 +148,10 @@
                 box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
                 display: flex;
                 justify-content: center;
-                .img {
-                    height: 90%;
+                align-items: center;
+                img {
+                    height: 70%;
                     box-sizing: border-box;
-                    width: 100%;
-                    background-repeat: no-repeat;
-                    background-size: cover !important;
-                    background-position: center;
-                    background: url(../../../assets/img/same.png);
                 }
             }
         }
